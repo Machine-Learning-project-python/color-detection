@@ -159,5 +159,7 @@ cv2.destroyAllWindows()
 # 10. Enlaces usados
 
 https://data-flair.training/blogs/project-in-python-colour-detection/
+
 https://www.pyimagesearch.com/2014/06/02/opencv-load-image/
+
 https://medium.com/@MeerAjaz/the-function-is-not-implemented-6804e9b38b06
