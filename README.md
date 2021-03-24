@@ -11,6 +11,7 @@
 7. [Leer la imagen con opencv](#schema7)
 8. [Declaración de variables globales](#schema8)
 9. [Main del programa](#schema9)
+10. [Enlaces usados](#schema10)
 
 <hr>
 
@@ -151,23 +152,12 @@ while(1):
 cv2.destroyAllWindows()
 
 ~~~
+<hr>
 
+<a name="schema10"></a>
 
+# 10. Enlaces usados
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(https://data-flair.training/blogs/project-in-python-colour-detection/)
-(https://www.pyimagesearch.com/2014/06/02/opencv-load-image/)
-(https://medium.com/@MeerAjaz/the-function-is-not-implemented-6804e9b38b06)
+https://data-flair.training/blogs/project-in-python-colour-detection/
+https://www.pyimagesearch.com/2014/06/02/opencv-load-image/
+https://medium.com/@MeerAjaz/the-function-is-not-implemented-6804e9b38b06
