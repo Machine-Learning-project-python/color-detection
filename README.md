@@ -1,5 +1,5 @@
 # Color Detection
-![img](./images/001.png)
+![img](./images/003.png)
 
 0. [Ejecutar archivo](#schema0)
 1. [Importar librerías](#schema1)
