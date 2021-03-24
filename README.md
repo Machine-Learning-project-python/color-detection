@@ -1,6 +1,7 @@
 # Color Detection
+![img](./images/001.png)
 
-
+0. [Ejecutar archivo](#schema0)
 1. [Importar librerías](#schema1)
 2. [Tomar una imagen del usuario](#schema2)
 3. [Leer el .csv](#shema3)
@@ -9,6 +10,16 @@
 6. [Obtener el color](#schema6)
 7. [Leer la imagen con opencv](#schema7)
 8. [Declaración de variables globales](#schema8)
+9. [Main del programa](#schema9)
+
+<hr>
+
+<a name="schema0"></a>
+
+# 0. Ejecutar archivo
+~~~
+python color-detection.py -i colorpic.jpg
+~~~
 <hr>
 
 <a name="schema1"></a>
@@ -43,7 +54,7 @@ Con `pd.read_csv()` leemos el csv, como vemos no tiene ningún nombre en las col
 ![csv](./images/001.png)
 ~~~python
 index = ["color", "color_name", "hex", "R", "G", "B"]
-data = pd.read_csv('./data/colors.csv', names = index, header = None)
+csv = pd.read_csv('./data/colors.csv', names = index, header = None)
 ~~~
 ![csv](./images/002.png)
 
@@ -85,13 +96,13 @@ def draw_function(event, x,y,flags,param):
 
 ~~~python
 def getColorName(R,G,B):
-    minimun = 1000
-    for i in range(len(data)):
-        distance = abs(R -int(data.loc[i,"R"])) + abs(G -int(data.loc[i, "G"])) + abs(B- int(data.loc[i,"B"]))
-        if distance <= minimum:
-            minimun = distance
-            colorName = data.loc[i,"color_name"]
-    return colorName
+    minimum = 10000
+    for i in range(len(csv)):
+        d = abs(R- int(csv.loc[i,"R"])) + abs(G- int(csv.loc[i,"G"]))+ abs(B- int(csv.loc[i,"B"]))
+        if(d<=minimum):
+            minimum = d
+            cname = csv.loc[i,"color_name"]
+    return cname
 ~~~
 <hr>
 
@@ -110,8 +121,36 @@ img = cv2.imread(img_path)
 clicked = False
 r = g = b = xpos = ypos = 0
 ~~~
+<hr>
+
+<a name="schema9"></a>
+
+# 9. Main del programa
+
+~~~python
+while(1):
+    
+    cv2.imshow("image",img)
+    if (clicked):
+        #crear un rectaángulo
+        cv2.rectangle(img,(20,20), (750,60), (b,g,r), -1)
+
+        #Crear el texto a mostrar
+        text = getColorName(r,g,b) + ' R='+ str(r) + ' G='+ str(g) + ' B='+ str(b)
+        
+        cv2.putText(img, text,(50,50),2,0.8,(255,255,255),2,cv2.LINE_AA)
+  
+        if(r+g+b>=600):
+            cv2.putText(img, text,(50,50),2,0.8,(0,0,0),2,cv2.LINE_AA)
+        clicked=False
+    #romper el bucle con ESC 
+    if cv2.waitKey(20) & 0xFF ==27:
+        break
 
 
+cv2.destroyAllWindows()
+
+~~~
 
 
 
